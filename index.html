@@ -23,8 +23,8 @@
     }();
     /* THE ACTUAL CODE */
     var link = [];
-    var link['github'] = fmt("http://github.com/#{repo}/blob/#{branch}/#{path}");
-    var link['prose']  = fmt("http://prose.io##{repo}/edit/#{{branch}/#{path}");
+    link['github'] = fmt("http://github.com/#{repo}/blob/#{branch}/#{path}");
+    link['prose']  = fmt("http://prose.io##{repo}/edit/#{branch}/#{path}");
     
     var href = fmt("<a href='#{link}'>#{index}</a>");
     
