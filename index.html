@@ -23,8 +23,8 @@
     }();
     /* THE ACTUAL CODE */
     var link = [];
-    link['github'] = fmt("http://github.com/#{repo}/blob/#{branch}/#{path}");
-    link['prose']  = fmt("http://prose.io##{repo}/edit/#{branch}/#{path}");
+    link['Github'] = "http://github.com/#{repo}/blob/#{branch}/#{path}";
+    link['prose.io']  = "http://prose.io##{repo}/edit/#{branch}/#{path}";
     
     var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
     
@@ -33,10 +33,11 @@
       branch: getParams("branch"),
       path: getParams("path")
     }
+    
     document.write("<ul>");
     for(var i in link){
       document.write(href({
-        link:  link[i](linkOpts),
+        link:  fmt(link[i])(linkOpts),
         index: i
         }));
     }
