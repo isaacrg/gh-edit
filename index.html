@@ -26,20 +26,21 @@
     link['github'] = fmt("http://github.com/#{repo}/blob/#{branch}/#{path}");
     link['prose']  = fmt("http://prose.io##{repo}/edit/#{branch}/#{path}");
     
-    var href = fmt("<a href='#{link}'>#{index}</a>");
+    var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
     
     var linkOpts = {
       repo: getParams("repo"),
       branch: getParams("branch"),
       path: getParams("path")
     }
-    
+    document.write("<ul>");
     for(var i in link){
       document.write(href({
         link:  link[i](linkOpts),
         index: i
         }));
     }
+    document.write("</ul>");
   </script>
 </head>
 <body>
