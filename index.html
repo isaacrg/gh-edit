@@ -60,19 +60,21 @@
       branch: getParams("branch"),
       path: getParams("path")
     }
-    
-    document.write("<div id='main'><ul>");
+    var x ="";
     for(var i in link){
-      document.write(href({
+      x += (href({
         link:  fmt(link[i])(linkOpts),
         index: i
         }));
     }
-    document.write("</ul></div>");
+    document.getElementById("links").innerHTML = x;
   </script>
 </head>
 <body>
-  
+  <div id='main'>
+    <ul id="links">
+    </ul>
+  </div>
   <!-- ON jekyll do
   <a href="http://github.com/{{site.github.repo}}/blob/{{site.github.branch}}/{{page.path}}">On Github</a>
   <a href="http://prose.io#{{site.github.repo}}/edit/{{site.github.branch}}/{{page.path}}">On prose.io</a>
