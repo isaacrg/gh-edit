@@ -60,20 +60,22 @@
       branch: getParams("branch"),
       path: getParams("path")
     }
-    var x ="";
+    var x ="<ul>";
     for(var i in link){
       x += (href({
         link:  fmt(link[i])(linkOpts),
         index: i
         }));
     }
+    x += "</ul>";
     document.getElementById("links").innerHTML = x;
   </script>
 </head>
 <body>
-  <div id='main'>
-    <ul id="links">
-    </ul>
+  <div id="main">
+    <div id="links">
+      
+    </div>
   </div>
   <!-- ON jekyll do
   <a href="http://github.com/{{site.github.repo}}/blob/{{site.github.branch}}/{{page.path}}">On Github</a>
