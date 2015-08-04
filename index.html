@@ -56,9 +56,9 @@
     var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
     
     var linkOpts = {
-      repo: getParams("repo"),
-      branch: getParams("branch"),
-      path: getParams("path")
+      repo: getParams("repo")||"isaacrg/gh-edit",
+      branch: getParams("branch")||"gh-pages",
+      path: getParams("path")||"index.html"
     }
     var x ="<ul>";
     for(var i in link){
