@@ -6,6 +6,6 @@ A simple github edit redirector.
 
 e.g.
 
-`http://isaacrg.me/gh-edit/?repo=isaacrg/isaacrg.github.io&branch=master&path=index.html`
+`http://isaacrg.github.io/gh-edit/?repo=isaacrg/isaacrg.github.io&branch=master&path=index.html`
 
 edits the file `index.html` of branch `master` in repository `isaacrg/isaacrg.github.io`.
