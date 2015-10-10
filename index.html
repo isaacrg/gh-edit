@@ -60,11 +60,11 @@
     var msg  = fmt("You wish to edit #{path} in branch #{branch} of repository #{repo}.");
     
     var linkOpts = {
-      repo:   getParams("repo")||"isaacrg/gh-edit",
+      repo:   getParams("repo")  ||"isaacrg/gh-edit",
       branch: getParams("branch")||"gh-pages",
-      path:   getParams("path")||"index.html"
+      path:   getParams("path")  ||"index.html"
     }
-    var fmsg = msg(msg,linkOpts);
+    var fmsg = msg(linkOpts);
     var x ="<ul>";
     for(var i in link){
       x += (href({
