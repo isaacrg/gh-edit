@@ -38,7 +38,7 @@
     function getParams(x){
      return window.params[x];
     }
-    
+    if(window.location.href.split('?')[1]&&window.location.href.split('?')[1].length>1){
     window.params = function(){
         var params = {};
         var param_array = window.location.href.split('?')[1].split('&');
@@ -48,18 +48,23 @@
         }
         return params;
     }();
+    }else{
+      window.params = [];
+    }
     /* THE ACTUAL CODE */
     var link = [];
     link['Github'] = "http://github.com/#{repo}/blob/#{branch}/#{path}";
     link['prose.io']  = "http://prose.io##{repo}/edit/#{branch}/#{path}";
     
     var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
+    var msg  = fmt("You wish to edit #{path} in branch #{branch} of repository #{repo}.");
     
     var linkOpts = {
-      repo: getParams("repo")||"isaacrg/gh-edit",
+      repo:   getParams("repo")||"isaacrg/gh-edit",
       branch: getParams("branch")||"gh-pages",
-      path: getParams("path")||"index.html"
+      path:   getParams("path")||"index.html"
     }
+    var fmsg = msg(msg,linkOpts);
     var x ="<ul>";
     for(var i in link){
       x += (href({
@@ -73,7 +78,7 @@
 <body>
   <div id="main">
     <div id="message">
-      You wish to edit <script>document.write(getParams("path"));</script> in branch <script>document.write(getParams("branch"));</script> of repository <script>document.write(getParams("repo"));</script>.
+      
     </div>
     <br />
     <div id="links">
