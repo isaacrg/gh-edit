@@ -2,91 +2,69 @@
 <head>
   <title>gh-edit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    html { overflow-y: scroll; }
-    
-    body { background: #f5f5f5; font-family: Helvetica, sans-serif; padding: 0 5%; }
-    
-    #main { background: white; max-width: 600px; text-align: left; padding: 1.5em; margin: 3em auto 1em; box-shadow: 1.5px 1.5px 6px rgba(0, 0, 0, 0.15); }
-    
-    #footer { font-size: small; color: black; text-align: right; }
-    
-    .nav { text-align: right; }
-    
-    .disabled-link { color: #999; }
-    
-    .pagination { font-size: small; }
-    
-    h1 { display: inline; text-align: left; }
-    
-    h2 { display: inline; color: gray; }
-    
-    a { color: #0096cc; text-decoration: none; }
-    
-    a:hover { color: #007199; }
-    
-    hr { color: #f5f5f5; background-color: #f5f5f5; height: 5px; border: 0px; }
-    
-    pre { overflow-x: scroll; }
-  </style>
-  <script>
-    /* RSSI
-     * Ruby-like simple string interpolation for Node.js
-     * Copyright (c) 2014 Mark Vasilkov (https://github.com/mvasilkov)
-     * License: MIT */
-    !function(){function e(e,f){var i=f&&f.blank,r=i?o:n;if((!f||!f.noCache)&&e in r)return r[e];var u=JSON.stringify(e).replace(/#\{(.*?)\}/g,function(e,n){return'"+(typeof obj["'+n+'"]!="undefined"?obj["'+n+'"]:"'+(i?"":e)+'")+"'});return r[e]=Function("obj",(i?t:"")+"return "+u)}var n={},o={},t='if (typeof obj == "undefined") obj = {}; ';"object"==typeof module&&module.exports?module.exports=e:"function"==typeof define&&define.amd?define(function(){return e}):"object"==typeof window&&(window.fmt=e)}();
-    /* GET PARAMETER PARSING - VIA http://stackoverflow.com/a/1562161/1437706 */
-    function getParams(x){
-     return window.params[x];
-    }
-    if(window.location.href.split('?')[1]&&window.location.href.split('?')[1].length>1){
-    window.params = function(){
-        var params = {};
-        var param_array = window.location.href.split('?')[1].split('&');
-        for(var i in param_array){
-            x = param_array[i].split('=');
-            params[x[0]] = x[1];
-        }
-        return params;
-    }();
-    }else{
-      window.params = [];
-    }
-    /* THE ACTUAL CODE */
-    var link = [];
-    link['Github'] = "http://github.com/#{repo}/blob/#{branch}/#{path}";
-    link['prose.io']  = "http://prose.io##{repo}/edit/#{branch}/#{path}";
-    
-    var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
-    var msg  = fmt("You wish to edit #{path} in branch #{branch} of repository #{repo}.");
-    
-    var linkOpts = {
-      repo:   getParams("repo")  ||"isaacrg/gh-edit",
-      branch: getParams("branch")||"gh-pages",
-      path:   getParams("path")  ||"index.html"
-    }
-    var fmsg = msg(linkOpts);
-    var x ="<ul>";
-    for(var i in link){
-      x += (href({
-        link:  fmt(link[i])(linkOpts),
-        index: i
-        }));
-    }
-    x += "</ul>";
-  </script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <meta name="theme-color" content="white">
 </head>
 <body>
-  <div id="main">
-    <div id="message">
-      
-    </div>
-    <br />
-    <div id="links">
-    </div>
-    <br />
-    <div id="footer">
-      This website is on <a href="https://github.com/isaacrg/gh-edit/">GitHub</a>
+  <div id="all">
+    <div id="content">
+      <script>
+        /* RSSI
+         * Ruby-like simple string interpolation for Node.js
+         * Copyright (c) 2014 Mark Vasilkov (https://github.com/mvasilkov)
+         * License: MIT */
+        !function(){function e(e,f){var i=f&&f.blank,r=i?o:n;if((!f||!f.noCache)&&e in r)return r[e];var u=JSON.stringify(e).replace(/#\{(.*?)\}/g,function(e,n){return'"+(typeof obj["'+n+'"]!="undefined"?obj["'+n+'"]:"'+(i?"":e)+'")+"'});return r[e]=Function("obj",(i?t:"")+"return "+u)}var n={},o={},t='if (typeof obj == "undefined") obj = {}; ';"object"==typeof module&&module.exports?module.exports=e:"function"==typeof define&&define.amd?define(function(){return e}):"object"==typeof window&&(window.fmt=e)}();
+        /* GET PARAMETER PARSING - VIA http://stackoverflow.com/a/1562161/1437706 */
+        function getParams(x){
+         return window.params[x];
+        }
+        if(window.location.href.split('?')[1]&&window.location.href.split('?')[1].length>1){
+        window.params = function(){
+            var params = {};
+            var param_array = window.location.href.split('?')[1].split('&');
+            for(var i in param_array){
+                x = param_array[i].split('=');
+                params[x[0]] = x[1];
+            }
+            return params;
+        }();
+        }else{
+          window.params = [];
+        }
+        /* THE ACTUAL CODE */
+        var link = [];
+        link['Github'] = "http://github.com/#{repo}/blob/#{branch}/#{path}";
+        link['prose.io']  = "http://prose.io##{repo}/edit/#{branch}/#{path}";
+        
+        var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
+        var msg  = fmt("You wish to edit #{path} in branch #{branch} of repository #{repo}.");
+        
+        var linkOpts = {
+          repo:   getParams("repo")  ||"isaacrg/gh-edit",
+          branch: getParams("branch")||"gh-pages",
+          path:   getParams("path")  ||"index.html"
+        }
+        var fmsg = msg(linkOpts);
+        var x ="<ul>";
+        for(var i in link){
+          x += (href({
+            link:  fmt(link[i])(linkOpts),
+            index: i
+            }));
+        }
+        x += "</ul>";
+      </script>
+      <div id="message">
+        
+      </div>
+      <br />
+      <div id="links">
+      </div>
+      <br />
+      <div id="footer">
+        This website is on <a href="https://github.com/isaacrg/gh-edit/">GitHub</a>
+      </div>
     </div>
   </div>
   <script>
