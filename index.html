@@ -35,7 +35,7 @@
         /* THE ACTUAL CODE */
         var link = [];
         link['Github'] = "http://github.com/#{repo}/blob/#{branch}/#{path}";
-        link['prose.io']  = "http://prose.io##{repo}/edit/#{branch}/#{path}";
+        link['Prose']  = "http://prose.io##{repo}/edit/#{branch}/#{path}";
         
         var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
         var msg  = fmt("You wish to edit <span style='font-family: monospace'>#{path}</span> in branch <span style='font-family: monospace'>#{branch}</span> of repository <span style='font-family: monospace'>#{repo}</span>.");
