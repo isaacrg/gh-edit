@@ -39,8 +39,8 @@
         
         var href = fmt("<li><a href='#{link}'>#{index}</a></li>");
         var msg  = fmt("View or edit <span style='font-family: monospace'>#{path}</span> in branch <span style='font-family: monospace'>#{branch}</span> of repository <span style='font-family: monospace'>#{repo}</span>.");
-        var title = fmt("Edit #{path} in branch #{branch}  of repository #{repo}")(linkOpts);
-        document.title = title;
+        /*var title = fmt("Edit #{path} in branch #{branch}  of repository #{repo}")(linkOpts);
+        document.title = title;*/
         
         var linkOpts = {
           repo:   getParams("repo")  ||"isaacrg/gh-edit",
